@@ -1,0 +1,156 @@
+/* Global Styles */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ---------- Landing Section ---------- */
+.container-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 30px;
+  min-height: 100vh;
+  background-color: #ffb001; /* Yellow Background */
+  color: #222;
+}
+
+.text-content {
+  max-width: 40%;
+  text-align: center;
+}
+
+.text-content h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #222;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.text-content p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #333;
+  line-height: 1.4;
+}
+
+.btn-more, .btn-back {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #222;
+  color: #fff;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-more:hover, .btn-back:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.image-content {
+  max-width: 50%;
+  margin-left: 2rem;
+}
+
+.image-content img {
+  width: 100%;
+  max-width: 700px;
+  animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ---------- About Section ---------- */
+.header-section {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+              url('https://source.unsplash.com/1600x900/?carpool,city') no-repeat center center/cover;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.header-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeInDown 1.5s ease-out;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.header-content h1 {
+  font-size: 3.5rem;
+  color: #FFC107;
+  margin-bottom: 1rem;
+}
+
+.header-content p {
+  font-size: 1.5rem;
+  color: #FFC107;
+  margin-bottom: 2rem;
+}
+
+.content-section {
+  padding: 4rem 0;
+  background-color: #fff;
+  color: #000;
+}
+
+.content-section .container {
+  position: relative;
+  z-index: 2;
+  padding: 0 20px;
+}
+
+.content-section h2 {
+  color: #FFC107;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.content-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* ---------- Responsive Design ---------- */
+@media (max-width: 768px) {
+  .container-custom {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 1rem;
+  }
+  .text-content, .image-content {
+    max-width: 100%;
+    margin: 0;
+  }
+  .text-content h1 {
+    font-size: 2.5rem;
+  }
+  .text-content p {
+    font-size: 1rem;
+  }
+}
