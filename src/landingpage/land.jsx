@@ -1,13 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { FaCar, FaLeaf, FaFacebookF, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa";
+import { FaCar, FaFacebookF, FaTwitter, FaInstagram, FaEnvelope } from "react-icons/fa";
 import { motion } from "framer-motion";
 import CarImage from "../assets/car2.jpg";
 import JourneysIcon from "../assets/journeysicon.png";
-import CarRiderIcon from "../assets/iconcar.png";
+import CarRiderIcon from "../assets/caricon.png";
 import SmartRidingIcon from "../assets/smart.png";
 import "./Land.css";
+
+// Animation variant for fade in and upward motion
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+function LoadingScreen() {
+  return (
+    <div className="loading-screen">
+      <div className="spinner"></div>
+    </div>
+  );
+}
 
 function ReviewSlider() {
   const reviews = [
@@ -28,9 +42,9 @@ function ReviewSlider() {
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % reviews.length);
     }, 5000);
@@ -38,15 +52,11 @@ function ReviewSlider() {
   }, [reviews.length]);
 
   return (
-    <div className="reviews-slider">
+    <motion.div className="reviews-slider" {...fadeInUp}>
       <div className="review-slide d-flex flex-column align-items-center justify-content-center gap-3">
         <div className="review-content p-3 bg-white rounded shadow">
-          <p className="review-quote fst-italic">
-            {reviews[currentIndex].quote}
-          </p>
-          <p className="review-author fw-bold">
-            {reviews[currentIndex].author}
-          </p>
+          <p className="review-quote fst-italic">{reviews[currentIndex].quote}</p>
+          <p className="review-author fw-bold">{reviews[currentIndex].author}</p>
         </div>
       </div>
       <div className="slider-controls d-flex justify-content-center gap-2 mt-3">
@@ -58,12 +68,13 @@ function ReviewSlider() {
           ></span>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 function Land() {
-  // Sample drivers data (if needed in other sections)
+  const [loading, setLoading] = useState(true);
+  // Sample drivers data
   const drivers = [
     { name: "Ben Stokes" },
     { name: "Shane Michael" },
@@ -74,6 +85,9 @@ function Land() {
   ];
 
   useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+
+    // Scroll spy effect for nav links
     const handleScroll = () => {
       const sections = document.querySelectorAll("section");
       const scrollPosition = window.scrollY + 200;
@@ -85,22 +99,26 @@ function Land() {
           document.querySelectorAll(".nav-link").forEach((link) =>
             link.classList.remove("active")
           );
-          document.querySelector(`a[href='#${section.id}']`)?.classList.add("active");
+          document.querySelector(`a[href="#${section.id}"]`)?.classList.add("active");
         }
       });
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
+  if (loading) {
+    return <LoadingScreen />;
+  }
+
   return (
-    <div className="App">
-      {/* --- NAVBAR using Bootstrap --- */}
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <div className="App fade-in">
+      <motion.nav className="navbar navbar-expand-lg navbar-light bg-light" {...fadeInUp}>
         <div className="container">
           <a className="navbar-brand d-flex align-items-center" href="#">
-            {/* Uncomment and use Logo if needed */}
-            {/* <img src={Logo} alt="Carpool Logo" className="nav-logo me-2" /> */}
             <FaCar size={24} style={{ color: "black" }} className="me-2" />
             <span>Carpool</span>
           </a>
@@ -166,18 +184,12 @@ function Land() {
                   </li>
                 </ul>
               </li>
-              <li className="nav-item">
-                <a className="nav-link phone-button" href="tel:9876543213">
-                  9876543213
-                </a>
-              </li>
             </ul>
           </div>
         </div>
-      </nav>
+      </motion.nav>
 
-      {/* --- HERO SECTION: Carpool text and Car2 image side by side --- */}
-      <header className="hero">
+      <motion.header className="hero" {...fadeInUp}>
         <div className="hero-container">
           <div className="hero-text">
             <p className="hero-subtitle text-uppercase">
@@ -193,20 +205,17 @@ function Land() {
               Join Us
             </button>
           </div>
+          {/* Uncomment below if you want to display the hero image */}
           {/* <div className="hero-image-container">
             <img src={CarImage} alt="Carpool Car" className="img-fluid" />
           </div> */}
         </div>
-      </header>
+      </motion.header>
 
-      {/* --- SECTION 1: RIDE OPTIONS --- */}
-      <section className="ride-options py-5" id="ride-options">
+      <motion.section className="ride-options py-5" id="ride-options" {...fadeInUp}>
         <div className="container">
-          <div className="d-flex justify-content-between align-items-center mb-4">
+          <div className="text-center mb-4">
             <h2>Where do you want to go?</h2>
-            <a href="#popular" className="text-decoration-none">
-              And More Popular Places
-            </a>
           </div>
           <div className="d-flex flex-wrap justify-content-center gap-3">
             <div className="ride-card p-3 bg-white shadow-sm rounded d-flex align-items-center justify-content-between">
@@ -220,63 +229,49 @@ function Land() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* --- SECTION 2: HOW IT WORKS --- */}
-      <section className="how-it-works py-5" id="how-it-works">
+      <motion.section className="how-it-works py-5" id="how-it-works" {...fadeInUp}>
         <div className="container text-center">
           <h2>How It Works</h2>
-          <div
-            className="section-divider my-3 mx-auto"
-            style={{ width: "60px", height: "2px" }}
-          ></div>
+          <div className="section-divider my-3 mx-auto"></div>
           <div className="row">
             <div className="col-md-4 mb-4">
               <h3>Find Your Ride</h3>
               <p>
-                Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam
-                aliquip consequat
+                Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat
               </p>
             </div>
             <div className="col-md-4 mb-4">
               <h3>Select & Book</h3>
               <p>
-                Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam
-                aliquip consequat
+                Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat
               </p>
             </div>
             <div className="col-md-4 mb-4">
               <h3>Travel Together</h3>
               <p>
-                Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam
-                aliquip consequat
+                Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat
               </p>
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* --- SECTION 3: OUR BEST DRIVERS --- */}
-      <section className="best-drivers py-5" id="drivers">
+      <motion.section className="best-drivers py-5" id="drivers" {...fadeInUp}>
         <div className="container text-center">
           <h2>Our Best Drivers</h2>
           <p className="mb-3">
-            Norem ipsum dolor sit amet consectetur adipiscing elit ebolore magna
-            aliqua eu enim ad minim veniam quis aliquip consequat
+            Norem ipsum dolor sit amet consectetur adipiscing elit ebolore magna aliqua eu enim ad minim veniam quis aliquip consequat
           </p>
-          <div
-            className="section-divider my-3 mx-auto"
-            style={{ width: "60px", height: "2px" }}
-          ></div>
+          <div className="section-divider my-3 mx-auto"></div>
           <div className="row">
             {drivers.map((driver, idx) => (
               <div className="col-md-4 col-lg-4 mb-4" key={idx}>
                 <div className="driver-card bg-white shadow rounded overflow-hidden">
                   <div className="p-3 text-start">
                     <h3 className="driver-name">{driver.name}</h3>
-                    <p className="driver-date-time">
-                      Wed, 8 January at 2:00 PM
-                    </p>
+                    <p className="driver-date-time">Wed, 8 January at 2:00 PM</p>
                     <p className="driver-price text-danger">₹19.50</p>
                     <ul className="driver-details list-unstyled">
                       <li>Max. 2 passengers</li>
@@ -289,59 +284,43 @@ function Land() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* --- SECTION 4: ABOUT CARPOOL --- */}
-      <section className="about-getrider py-5" id="about">
+      <motion.section className="about-getrider py-5" id="about" {...fadeInUp}>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-md-6">
               <h2>About Carpool</h2>
               <div className="feature d-flex align-items-start mb-3">
                 <motion.div whileHover={{ scale: 1.1 }}>
-                  <img
-                    src={JourneysIcon}
-                    alt="Journeys Icon"
-                    className="feature-icon me-3"
-                  />
+                  <img src={JourneysIcon} alt="Journeys Icon" className="feature-icon me-3" />
                 </motion.div>
                 <div>
                   <h3>Millions Of Journeys</h3>
                   <p>
-                    Norem ipsum dolor sit amet elit ebolore aliquaet enim nim
-                    veriam aliquip consequat...
+                    Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat...
                   </p>
                 </div>
               </div>
               <div className="feature d-flex align-items-start mb-3">
                 <motion.div whileHover={{ scale: 1.1 }}>
-                  <img
-                      src={CarRiderIcon}
-                    alt="Car Rider Icon"
-                    className="feature-icon me-3"
-                  />
+                  <img src={CarRiderIcon} alt="Car Rider Icon" className="feature-icon me-3" />
                 </motion.div>
                 <div>
                   <h3>Largest Car Rider Service</h3>
                   <p>
-                    Norem ipsum dolor sit amet elit ebolore aliquaet enim nim
-                    veriam aliquip consequat...
+                    Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat...
                   </p>
                 </div>
               </div>
               <div className="feature d-flex align-items-start">
                 <motion.div whileHover={{ scale: 1.1 }}>
-                  <img
-                    src={SmartRidingIcon}
-                    alt="Smart Riding Icon"
-                    className="feature-icon me-3"
-                  />
+                  <img src={SmartRidingIcon} alt="Smart Riding Icon" className="feature-icon me-3" />
                 </motion.div>
                 <div>
                   <h3>Simple & Smart Riding</h3>
                   <p>
-                    Norem ipsum dolor sit amet elit ebolore aliquaet enim nim
-                    veriam aliquip consequat...
+                    Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat...
                   </p>
                 </div>
               </div>
@@ -351,22 +330,17 @@ function Land() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* --- SECTION 5: CUSTOMER REVIEWS --- */}
-      <section className="customer-reviews py-5" id="reviews">
+      <motion.section className="customer-reviews py-5" id="reviews" {...fadeInUp}>
         <div className="container text-center">
           <h2>Customer Reviews</h2>
-          <div
-            className="section-divider my-3 mx-auto"
-            style={{ width: "60px", height: "2px" }}
-          ></div>
+          <div className="section-divider my-3 mx-auto"></div>
           <ReviewSlider />
         </div>
-      </section>
+      </motion.section>
 
-      {/* --- FOOTER --- */}
-      <footer className="site-footer bg-dark text-light py-4">
+      <motion.footer className="site-footer bg-dark text-light py-4" {...fadeInUp}>
         <div className="container text-center">
           <div className="footer-logo-wrap mb-3">
             <h2 className="footer-logo">Carpool</h2>
@@ -390,7 +364,7 @@ function Land() {
           </div>
           <p className="footer-rights">(C) 2021 ALL RIGHTS RESERVED.</p>
         </div>
-      </footer>
+      </motion.footer>
     </div>
   );
 }

@@ -11,12 +11,22 @@ body {
   overflow-x: hidden;
 }
 
+/* Smooth Transitions for common elements */
+.nav-link,
+.dropdown-item,
+.hero-cta,
+.ride-card,
+.driver-card,
+.feature,
+.footer-social a {
+  transition: all 0.3s ease;
+}
+
 /* ----------------------------- */
 /* NAVBAR */
 /* ----------------------------- */
 .navbar .navbar-brand,
-.navbar .nav-link,
-.phone-button {
+.navbar .nav-link {
   color: black !important;
 }
 .nav-logo {
@@ -34,15 +44,24 @@ body {
 .hero {
   width: 100%;
   height: 80vh;
-  background: url('/images/hero-bg.jpg') no-repeat center center/cover;
+  /* Replace the URL below with your own image */
+  background: url('herosection.jpg') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.hero-content {
-  text-align: center;
-  color: black;
-  padding: 0 1rem;
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+.hero-text {
+  flex: 1;
+  text-align: left;
 }
 .hero-subtitle {
   font-size: 0.9rem;
@@ -63,99 +82,31 @@ body {
   color: white;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s ease;
 }
 .hero-cta:hover {
-  background-color: #fbb412;
+  background-color: #fbb001;
   color: grey;
-}
-
-/* ----------------------------- */
-/* HERO SECTION: SIDE BY SIDE LAYOUT */
-/* ----------------------------- */
-.hero-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-}
-.hero-text {
-  flex: 1;
-  text-align: left;
-}
-.hero-image-container {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-.floating-image {
-  max-width: 100%;
-  animation: float 3s infinite ease-in-out;
-  position: relative;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
 
 /* ----------------------------- */
 /* RIDE OPTIONS SECTION */
 /* ----------------------------- */
 .ride-options {
-  background-color: #fbb412;
+  background-color: #fbb001;
   padding: 60px 0;
 }
-.ride-options-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.ride-options-header h2 {
-  font-size: 1.5rem;
-  color: black;
-}
-.ride-options-header a {
-  text-decoration: none;
-  color: black;
-  font-weight: 500;
-  transition: color 0.3s ease;
-}
-.ride-options-header a:hover {
-  color: black;
-}
-.ride-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+.ride-options .container .text-center h2 {
+  text-align: center;
 }
 .ride-card {
-  background-color: #fbb412;
+  background-color: #fbb001;
   padding: 1rem 1.5rem;
   border-radius: 6px;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   width: 220px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-.ride-locations {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: black;
-}
-.ride-price {
-  background-color: #e79c09;
-  color: white;
-  padding: 0.3rem 0.6rem;
-  border-radius: 4px;
-  font-weight: 500;
-}
-.ride-arrow {
-  color: black;
-  font-weight: bold;
 }
 
 /* ----------------------------- */
@@ -164,7 +115,7 @@ body {
 .how-it-works {
   padding: 80px 20px;
   text-align: center;
-  background-color: #fbb412;
+  background-color: #fbb001;
 }
 .how-it-works h2 {
   font-size: 1.8rem;
@@ -175,47 +126,17 @@ body {
 .section-divider {
   width: 60px;
   height: 2px;
-  background-color: #e79c09;
+  background-color: #ffb001;
   margin: 0 auto 40px;
-}
-.steps-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-.step {
-  max-width: 220px;
-  text-align: center;
-}
-.step-icon {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 20px;
-}
-.step h3 {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  font-weight: 600;
-  color: black;
-}
-.step p {
-  font-size: 0.9rem;
-  color: black;
-  line-height: 1.4;
 }
 
 /* ----------------------------- */
 /* OUR BEST DRIVERS SECTION */
 /* ----------------------------- */
 .best-drivers {
-  background-color: #fbb412;
+  background-color: #fbb001;
   padding: 60px 20px;
   text-align: center;
-}
-.best-drivers-container {
-  max-width: 1200px;
-  margin: 0 auto;
 }
 .best-drivers h2 {
   font-size: 1.8rem;
@@ -229,61 +150,15 @@ body {
   color: black;
   line-height: 1.5;
 }
-.driver-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-.driver-card {
-  background-color: #fbb412;
-  border-radius: 6px;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-.driver-card-body {
-  padding: 1rem;
-}
-.driver-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  color: black;
-}
-.driver-date-time {
-  font-size: 0.9rem;
-  color: black;
-  margin-bottom: 0.5rem;
-}
-.driver-price {
-  font-size: 1rem;
-  color: #a55c2d;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-.driver-details {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  color: black;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-.driver-details li {
-  margin-bottom: 0.3rem;
-}
 
 /* ----------------------------- */
 /* ABOUT CARPOOL SECTION */
 /* ----------------------------- */
 .about-getrider {
-  background-color: #fbb412;
+  background-color: #fbb001;
   padding: 60px 20px;
 }
-.about-getrider-container {
+.about-getrider .container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
@@ -313,10 +188,6 @@ body {
   height: 40px;
   flex-shrink: 0;
 }
-.feature-icon img {
-  width: 100%;
-  height: auto;
-}
 .feature h3 {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
@@ -339,7 +210,7 @@ body {
   display: inline-block;
 }
 @media (max-width: 992px) {
-  .about-getrider-container {
+  .about-getrider .container {
     flex-direction: column;
   }
   .about-image {
@@ -352,7 +223,7 @@ body {
 /* CUSTOMER REVIEWS SECTION */
 /* ----------------------------- */
 .customer-reviews {
-  background-color: #fbb412;
+  background-color: #fbb001;
   padding: 60px 20px;
   text-align: center;
 }
@@ -376,7 +247,7 @@ body {
 }
 .review-content {
   background-color: #fbb412;
-  box-shadow: 0 2px 15px rgba(54,32,27,0.2);
+  box-shadow: 0 2px 15px rgba(54, 32, 27, 0.2);
   border-radius: 6px;
   padding: 1.5rem;
   min-width: 280px;
@@ -410,11 +281,6 @@ body {
 .dot.active {
   background-color: #e79c09;
 }
-@media (max-width: 768px) {
-  .review-slide {
-    flex-direction: column;
-  }
-}
 
 /* ----------------------------- */
 /* FOOTER SECTION */
@@ -424,14 +290,6 @@ body {
   color: #fbb412;
   text-align: center;
   padding: 40px 20px;
-}
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-.footer-logo-wrap {
-  margin-bottom: 1rem;
 }
 .footer-logo {
   font-size: 1.8rem;
@@ -449,7 +307,6 @@ body {
   color: #8f8580;
   margin: 0 0.5rem;
   font-size: 1.2rem;
-  transition: color 0.3s ease;
 }
 .footer-social a:hover {
   color: #e79c09;
@@ -459,11 +316,65 @@ body {
   color: #8f8580;
   margin-top: 1rem;
 }
+
+/* ----------------------------- */
+/* DROPDOWN CUSTOMIZATION */
+/* ----------------------------- */
+.dropdown-menu {
+  background-color: #fff !important;
+}
+.dropdown-item {
+  background-color: #fff !important;
+  color: black !important;
+}
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #fff !important;
+  color: black !important;
+}
+
+/* ----------------------------- */
+/* LAZY LOADING & FADE IN EFFECT */
+/* ----------------------------- */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #e79c09;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .footer-container {
+  .footer-container,
+  .about-getrider .container {
     text-align: center;
   }
-  .footer-social {
-    margin-top: 1rem;
+  .about-image {
+    margin-top: 2rem;
   }
 }
