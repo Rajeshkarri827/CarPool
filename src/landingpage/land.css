@@ -1,171 +1,469 @@
-General Styling
-body, html {
+/* General Reset */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
-  background-color: #ffb001;
-  color: #222;
-  scroll-behavior: smooth;
+}
+body {
+  background-color: #ffb001 !important;
+  color: black;
+  overflow-x: hidden;
 }
 
-/* Navbar */
-.navbar {
-  transition: background-color 0.3s;
+/* ----------------------------- */
+/* NAVBAR */
+/* ----------------------------- */
+.navbar .navbar-brand,
+.navbar .nav-link,
+.phone-button {
+  color: black !important;
 }
-.navbar .nav-link {
-  color: #fff !important;
-  transition: 0.3s;
+.nav-logo {
+  width: 40px;
+  height: auto;
 }
-.navbar .nav-link.active {
-  color: #ffb001 !important;
-  font-weight: bold;
-}
-
-/* Custom Navbar Button Styles */
-.navbar .btn-join {
-  background-color: #ffb001;
-  border: none;
-  color: #222;
-  border-radius: 30px;
-  padding: 8px 16px;
-  font-weight: bold;
-  margin-right: 10px;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.navbar .btn-join:hover {
-  background-color: #e0a800;
-  transform: scale(1.05);
-}
-.navbar .btn-guest {
-  background-color: #222;
-  border: 1px solid #ffb001;
-  color: #ffb001;
-  border-radius: 30px;
-  padding: 8px 16px;
-  font-weight: bold;
-  transition: background-color 0.3s, transform 0.3s;
-}
-.navbar .btn-guest:hover {
-  background-color: #ffb001;
-  color: #222;
-  transform: scale(1.05);
+.nav-title {
+  margin-left: 10px;
+  font-size: 1.5rem;
 }
 
-/* Hero Section */
+/* ----------------------------- */
+/* HERO SECTION */
+/* ----------------------------- */
 .hero {
+  width: 100%;
+  height: 80vh;
+  background: url('/images/hero-bg.jpg') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  min-height: 100vh;
-  padding: 30px;
-  gap: 2rem;
 }
 .hero-content {
-  max-width: 40%;
+  text-align: center;
+  color: black;
+  padding: 0 1rem;
 }
-.hero h1 {
-  font-size: 4rem;
-  font-weight: bold;
+.hero-subtitle {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
-.hero p {
-  font-size: 1.2rem;
-  margin-top: 10px;
-  color: #333;
+.hero-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+.hero-cta {
+  background-color: black;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.hero-cta:hover {
+  background-color: #fbb412;
+  color: grey;
+}
+
+/* ----------------------------- */
+/* HERO SECTION: SIDE BY SIDE LAYOUT */
+/* ----------------------------- */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+.hero-text {
+  flex: 1;
+  text-align: left;
+}
+.hero-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 .floating-image {
-  max-width: 50%;
+  max-width: 100%;
   animation: float 3s infinite ease-in-out;
+  position: relative;
 }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
 
-/* Section Styling */
-.section {
-  padding: 80px 20px;
-  text-align: center;
-  transition: transform 0.3s, opacity 0.3s;
+/* ----------------------------- */
+/* RIDE OPTIONS SECTION */
+/* ----------------------------- */
+.ride-options {
+  background-color: #fbb412;
+  padding: 60px 0;
 }
-.section h2 {
-  font-size: 2.5rem;
-  color: #222;
-  margin-bottom: 20px;
+.ride-options-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.section p {
-  font-size: 1.2rem;
-  color: #333;
+.ride-options-header h2 {
+  font-size: 1.5rem;
+  color: black;
 }
-.icon {
-  font-size: 3rem;
-  margin-bottom: 15px;
-  color: #222;
+.ride-options-header a {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
-
-/* Customer Reviews Section */
-.reviews {
-  background-color: #f1f8e9;
-  padding-bottom: 80px; /* Extra gap to prevent overlap with footer */
+.ride-options-header a:hover {
+  color: black;
 }
-.review-card {
-  background-color: transparent; /* Remove white background */
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+.ride-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
-.review-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+.ride-card {
+  background-color: #fbb412;
+  padding: 1rem 1.5rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  width: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.review-card-title {
-  margin-bottom: 10px;
+.ride-locations {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: black;
+}
+.ride-price {
+  background-color: #e79c09;
+  color: white;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.ride-arrow {
+  color: black;
   font-weight: bold;
 }
-.review-card-subtitle {
+
+/* ----------------------------- */
+/* HOW IT WORKS SECTION */
+/* ----------------------------- */
+.how-it-works {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #fbb412;
+}
+.how-it-works h2 {
+  font-size: 1.8rem;
   margin-bottom: 10px;
-  color: #555;
+  font-weight: 600;
+  color: black;
+}
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background-color: #e79c09;
+  margin: 0 auto 40px;
+}
+.steps-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.step {
+  max-width: 220px;
+  text-align: center;
+}
+.step-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+.step h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: black;
+}
+.step p {
+  font-size: 0.9rem;
+  color: black;
+  line-height: 1.4;
 }
 
-/* Footer Styling */
-.footer {
-  background-color: #222;
-  color: #fff;
-  padding: 20px 0;
+/* ----------------------------- */
+/* OUR BEST DRIVERS SECTION */
+/* ----------------------------- */
+.best-drivers {
+  background-color: #fbb412;
+  padding: 60px 20px;
+  text-align: center;
 }
-.footer a {
-  color: #ffb001;
-  text-decoration: none;
+.best-drivers-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.footer a:hover {
-  text-decoration: underline;
+.best-drivers h2 {
+  font-size: 1.8rem;
+  color: black;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.best-drivers p {
+  max-width: 600px;
+  margin: 0 auto 30px;
+  color: black;
+  line-height: 1.5;
+}
+.driver-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.driver-card {
+  background-color: #fbb412;
+  border-radius: 6px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.driver-card-body {
+  padding: 1rem;
+}
+.driver-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: black;
+}
+.driver-date-time {
+  font-size: 0.9rem;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+.driver-price {
+  font-size: 1rem;
+  color: #a55c2d;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.driver-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: black;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.driver-details li {
+  margin-bottom: 0.3rem;
 }
 
-/* Hover Animation for Sections */
-.section:hover {
-  transform: scale(1.02);
+/* ----------------------------- */
+/* ABOUT CARPOOL SECTION */
+/* ----------------------------- */
+.about-getrider {
+  background-color: #fbb412;
+  padding: 60px 20px;
 }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .hero {
+.about-getrider-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.about-text {
+  flex: 1;
+  min-width: 300px;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
+.about-text h2 {
+  font-size: 1.8rem;
+  color: black;
+  margin-bottom: 1rem;
+}
+.feature {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.feature-icon {
+  margin-right: 1rem;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.feature-icon img {
+  width: 100%;
+  height: auto;
+}
+.feature h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: black;
+}
+.feature p {
+  font-size: 0.9rem;
+  color: black;
+  line-height: 1.4;
+}
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  text-align: right;
+}
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  display: inline-block;
+}
+@media (max-width: 992px) {
+  .about-getrider-container {
     flex-direction: column;
+  }
+  .about-image {
     text-align: center;
-    gap: 1rem;
+    margin-top: 2rem;
   }
-  .hero h1 {
-    font-size: 2.5rem;
+}
+
+/* ----------------------------- */
+/* CUSTOMER REVIEWS SECTION */
+/* ----------------------------- */
+.customer-reviews {
+  background-color: #fbb412;
+  padding: 60px 20px;
+  text-align: center;
+}
+.customer-reviews h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: black;
+}
+.reviews-slider {
+  position: relative;
+  max-width: 100%;
+}
+.review-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+.review-content {
+  background-color: #fbb412;
+  box-shadow: 0 2px 15px rgba(54,32,27,0.2);
+  border-radius: 6px;
+  padding: 1.5rem;
+  min-width: 280px;
+  max-width: 500px;
+}
+.review-quote {
+  font-size: 1rem;
+  color: black;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+.review-author {
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+}
+.slider-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dot.active {
+  background-color: #e79c09;
+}
+@media (max-width: 768px) {
+  .review-slide {
+    flex-direction: column;
   }
-  .hero p {
-    font-size: 1rem;
+}
+
+/* ----------------------------- */
+/* FOOTER SECTION */
+/* ----------------------------- */
+.site-footer {
+  background-color: #36201b;
+  color: #fbb412;
+  text-align: center;
+  padding: 40px 20px;
+}
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.footer-logo-wrap {
+  margin-bottom: 1rem;
+}
+.footer-logo {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fbb412;
+}
+.footer-description {
+  font-size: 0.9rem;
+  max-width: 600px;
+  margin: 0.5rem auto 1.5rem;
+  line-height: 1.5;
+  color: #8f8580;
+}
+.footer-social a {
+  color: #8f8580;
+  margin: 0 0.5rem;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+.footer-social a:hover {
+  color: #e79c09;
+}
+.footer-rights {
+  font-size: 0.85rem;
+  color: #8f8580;
+  margin-top: 1rem;
+}
+@media (max-width: 768px) {
+  .footer-container {
+    text-align: center;
   }
-  .floating-image {
-    max-width: 80%;
-  }
-  .section h2 {
-    font-size: 2rem;
+  .footer-social {
+    margin-top: 1rem;
   }
 }
