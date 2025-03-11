@@ -2,7 +2,7 @@ import './App.css'
 import Reg from "./components/Registration/Reg";
 import Log from './components/Login/Log';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Land from './Landingpage/Land'
+import Land from './landingpage/Land'
 
 function App() {
 
