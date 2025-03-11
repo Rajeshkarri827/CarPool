@@ -6,7 +6,6 @@ import Land from './Landingpage/Land'
 
 function App() {
 
-
   return (
     <>
       <Routes>
