@@ -1,0 +1,87 @@
+.registration-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f6b825; 
+    padding: 20px;
+  }
+  
+  .registration-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .registration-card h2 {
+    margin-bottom: 1.5rem;
+    color: #36201b;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #36201b;
+    font-weight: 500;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .btn-primary {
+    background-color: #36201b;
+    color: #fbb412;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  .btn-primary:hover {
+    background-color: #fbb412;
+    color: #36201b;
+  }
+  
+  .redirect-text {
+    margin-top: 1rem;
+    color: #36201b;
+  }
+  
+  .redirect-text a {
+    color: #fbb412;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+@media (max-width: 768px) {
+  .registration-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .registration-image,
+  .registration-card {
+    max-width: 90%;
+    width: 100%;
+  }
+  .registration-image {
+    margin-bottom: 1rem;
+  }
+} 

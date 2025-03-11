@@ -8,6 +8,7 @@ import JourneysIcon from "../assets/journeysicon.png";
 import CarRiderIcon from "../assets/caricon.png";
 import SmartRidingIcon from "../assets/smart.png";
 import "./Land.css";
+import { Link } from "react-router-dom";
 
 // Animation variant for fade in and upward motion
 const fadeInUp = {
@@ -27,18 +28,18 @@ function ReviewSlider() {
   const reviews = [
     {
       quote:
-        "“Norem ipsum dolor sit amet consectetur adipisicing elit quis nostrum exercitao duis iure dolor reprehenderit incidun labore et dolore magna aliqua exercitation.”",
-      author: "Donald James",
+        "Carpool made my daily commute a breeze. The drivers are punctual and the app is incredibly user-friendly.",
+      author: "Sarah Thompson",
     },
     {
       quote:
-        "“I had an amazing experience with Carpool. The ride was comfortable and the service was top-notch!”",
-      author: "Alex Johnson",
+        "Sharing rides with Carpool has not only saved me money but also helped reduce traffic congestion in my city.",
+      author: "David Miller",
     },
     {
       quote:
-        "“Carpool exceeded my expectations. Reliable, friendly drivers and a smooth journey!”",
-      author: "Priya Singh",
+        "I love the convenience and community feeling that comes with every ride on Carpool. Highly recommended!",
+      author: "Emily Davis",
     },
   ];
 
@@ -136,9 +137,11 @@ function Land() {
           <div className="collapse navbar-collapse" id="navbarContent">
             <ul className="navbar-nav ms-auto align-items-lg-center">
               <li className="nav-item">
+                <Link to={"/register"}>
                 <a className="nav-link" href="#join">
                   Join Us
                 </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#guest">
@@ -198,9 +201,9 @@ function Land() {
             <h1 className="hero-title">
               Need to Travel? Get a lift or Find a free seat
             </h1>
-            <button
+            <button id="regbtn"
               className="hero-cta btn btn-primary"
-              onClick={() => (window.location.href = "#join")}
+              onClick={() => (window.location.href = "/register")}
             >
               Join Us
             </button>
@@ -219,13 +222,13 @@ function Land() {
           </div>
           <div className="d-flex flex-wrap justify-content-center gap-3">
             <div className="ride-card p-3 bg-white shadow-sm rounded d-flex align-items-center justify-content-between">
-              <span>London to Manchester</span>
+              <span>Hyderabad to Vijayawada</span>
             </div>
             <div className="ride-card p-3 bg-white shadow-sm rounded d-flex align-items-center justify-content-between">
-              <span>Belarus to Russia</span>
+              <span>Vijayawada to Visakhapatnam</span>
             </div>
             <div className="ride-card p-3 bg-white shadow-sm rounded d-flex align-items-center justify-content-between">
-              <span>Florida to Newyork</span>
+              <span>Hyderabad to Warangal</span>
             </div>
           </div>
         </div>
@@ -239,19 +242,19 @@ function Land() {
             <div className="col-md-4 mb-4">
               <h3>Find Your Ride</h3>
               <p>
-                Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat
+                Browse available rides near you, check departure times, and select the option that best fits your schedule.
               </p>
             </div>
             <div className="col-md-4 mb-4">
               <h3>Select & Book</h3>
               <p>
-                Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat
+                Choose your preferred ride, book your seat instantly, and enjoy competitive pricing on every journey.
               </p>
             </div>
             <div className="col-md-4 mb-4">
               <h3>Travel Together</h3>
               <p>
-                Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat
+                Share your journey with like-minded travelers, reduce your carbon footprint, and save money while commuting.
               </p>
             </div>
           </div>
@@ -262,7 +265,7 @@ function Land() {
         <div className="container text-center">
           <h2>Our Best Drivers</h2>
           <p className="mb-3">
-            Norem ipsum dolor sit amet consectetur adipiscing elit ebolore magna aliqua eu enim ad minim veniam quis aliquip consequat
+            Our drivers are experienced, verified professionals committed to providing safe, reliable, and comfortable rides.
           </p>
           <div className="section-divider my-3 mx-auto"></div>
           <div className="row">
@@ -272,7 +275,7 @@ function Land() {
                   <div className="p-3 text-start">
                     <h3 className="driver-name">{driver.name}</h3>
                     <p className="driver-date-time">Wed, 8 January at 2:00 PM</p>
-                    <p className="driver-price text-danger">₹19.50</p>
+                    <p className="driver-price text-danger">₹789.50</p>
                     <ul className="driver-details list-unstyled">
                       <li>Max. 2 passengers</li>
                       <li>No pets</li>
@@ -298,7 +301,7 @@ function Land() {
                 <div>
                   <h3>Millions Of Journeys</h3>
                   <p>
-                    Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat...
+                    Carpool has facilitated millions of shared rides, connecting communities and offering affordable transportation solutions for everyday travel.
                   </p>
                 </div>
               </div>
@@ -309,7 +312,7 @@ function Land() {
                 <div>
                   <h3>Largest Car Rider Service</h3>
                   <p>
-                    Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat...
+                    With a vast network of drivers and riders, Carpool stands as one of the largest and most trusted carpooling platforms in the region.
                   </p>
                 </div>
               </div>
@@ -320,7 +323,7 @@ function Land() {
                 <div>
                   <h3>Simple & Smart Riding</h3>
                   <p>
-                    Norem ipsum dolor sit amet elit ebolore aliquaet enim nim veriam aliquip consequat...
+                    Our user-friendly app and smart routing technology make booking a ride seamless, efficient, and cost-effective.
                   </p>
                 </div>
               </div>
@@ -346,7 +349,7 @@ function Land() {
             <h2 className="footer-logo">Carpool</h2>
           </div>
           <p className="footer-description mx-auto mb-3" style={{ maxWidth: "600px" }}>
-            Norem ipsum dolor sit amet consectetur adipiscing elit ebolore magna aliqua eu enim ad minim veniam quis aliquip consequat.
+            Carpool is dedicated to providing an affordable, sustainable, and convenient way to share rides. Join us and be part of the movement towards a greener future.
           </p>
           <div className="footer-social mb-3">
             <motion.div whileHover={{ scale: 1.2 }} className="d-inline-block mx-2">

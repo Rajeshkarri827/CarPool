@@ -1,12 +1,20 @@
 import './App.css'
-import Land from './landingpage/land'
+import Reg from "./components/Registration/Reg";
+import Log from './components/Login/Log';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Land from './Landingpage/Land'
 
 function App() {
 
 
   return (
     <>
-      <Land />
+      <Routes>
+        <Route path="/" element={<Land />} />
+        <Route path="/register" element={<Reg />} />
+        <Route path="/login"element={<Log/>}/>
+      </Routes>
+      
     </>
   )
 }
