@@ -9,6 +9,12 @@ import CarRiderIcon from "../assets/caricon.png";
 import SmartRidingIcon from "../assets/smart.png";
 import "./Land.css";
 import { Link } from "react-router-dom";
+import {
+  getAuth,
+  signInAnonymously
+} from "firebase/auth";
+
+const auth = getAuth();
 
 // Animation variant for fade in and upward motion
 const fadeInUp = {
@@ -115,6 +121,17 @@ function Land() {
     return <LoadingScreen />;
   }
 
+  const handleguestlogin = async() => {
+      try{
+        await signInAnonymously(auth)
+        alert("guest login successfull")
+      }
+      catch(err) {
+        console.log(err)
+        alert("error occured")
+      }
+    }
+
   return (
     <div className="App fade-in">
       <motion.nav className="navbar navbar-expand-lg navbar-light bg-light" {...fadeInUp}>
@@ -144,7 +161,7 @@ function Land() {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#guest">
+                <a className="nav-link" href="#guest" onClick={handleguestlogin}>
                   Guest Login
                 </a>
               </li>

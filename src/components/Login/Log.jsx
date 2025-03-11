@@ -2,8 +2,18 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import "./Log.css";
-// import LoginImage from "../../assets/login.jpg"; // Make sure this image exists in your assets folder
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import LoginImage from "../../assets/logimg.png";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInAnonymously,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from "firebase/auth";
+
+const auth = getAuth();
+const Googleprovider = new GoogleAuthProvider();
+
 
 function Log() {
   const [formData, setFormData] = useState({
@@ -24,13 +34,12 @@ function Log() {
     setLoading(true);
 
     try {
-      const auth = getAuth();
       const userCredential = await signInWithEmailAndPassword(
         auth,
         formData.email,
         formData.password
       );
-      
+
       // Login successful
       setLoading(false);
       navigate("/dashboard"); // Navigate to dashboard after successful login
@@ -41,6 +50,28 @@ function Log() {
     }
   };
 
+  const handlegooglelogin = async () => {
+    try {
+      await signInWithPopup(auth, Googleprovider);
+      console.log("Google login successful");
+      alert("Google login successful");
+    } catch (err) {
+      console.log(err);
+      alert("Error occurred during Google login");
+    }
+  };
+  
+  const handleguestlogin = async() => {
+    try{
+      await signInAnonymously(auth)
+      alert("guest login successfull")
+    }
+    catch(err) {
+      console.log(err)
+      alert("error occured")
+    }
+  }
+
   return (
     <div className="login-container">
       {/* Image section with slide-in from left animation */}
@@ -50,7 +81,7 @@ function Log() {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
-        {/* <img src={LoginImage} alt="Login Visual" className="login-image" /> */}
+        {<img src={LoginImage} alt="Login Visual" className="login-image" />}
       </motion.div>
 
       {/* Login form with slide-in from right animation */}
@@ -62,7 +93,7 @@ function Log() {
       >
         <div className="login-card">
           <h2 className="login-title">Welcome Back</h2>
-          <p className="login-subtitle">Please sign in to continue</p>
+          <p className="login-subtitle">Please Log in to continue</p>
 
           {error && <div className="error-message">{error}</div>}
 
@@ -104,14 +135,16 @@ function Log() {
               className={`login-button ${loading ? "loading" : ""}`}
               disabled={loading}
             >
-              {loading ? "Signing In..." : "Sign In"}
+              {loading ? "Signing In..." : "Log In"}
             </button>
+
+            <button onClick={handlegooglelogin}>Google Login</button>
+            <button onClick={handleguestlogin}>Guest Login</button>
           </form>
 
           <div className="register-link">
             <p>
-              Don't have an account?{" "}
-              <Link to={"/register"}>Sign Up</Link>
+              Don't have an account? <Link to={"/register"}>Sign Up</Link>
             </p>
           </div>
         </div>
