@@ -8,7 +8,7 @@ import JourneysIcon from "../assets/journeysicon.png";
 import CarRiderIcon from "../assets/caricon.png";
 import SmartRidingIcon from "../assets/smart.png";
 import "./Land.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   getAuth,
   signInAnonymously
@@ -81,6 +81,7 @@ function ReviewSlider() {
 
 function Land() {
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   // Sample drivers data
   const drivers = [
     { name: "Ben Stokes" },
@@ -130,6 +131,9 @@ function Land() {
         console.log(err)
         alert("error occured")
       }
+    }
+    const handleregisterpage = () => {
+      navigate("/register")
     }
 
   return (
@@ -220,7 +224,7 @@ function Land() {
             </h1>
             <button id="regbtn"
               className="hero-cta btn btn-primary"
-              onClick={() => (window.location.href = "/register")}
+              onClick={handleregisterpage}
             >
               Join Us
             </button>
