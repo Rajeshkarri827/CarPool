@@ -80,14 +80,14 @@ body {
   margin-bottom: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color:black
+  color:white
 }
 .hero-title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
   line-height: 1.3;
-  color:black;
+  color:white;
 }
 
 .hero-cta {
@@ -106,9 +106,7 @@ body {
   color: black;
 }
 
-/* ----------------------------- */
-/* RIDE OPTIONS SECTION */
-/* ----------------------------- */
+
 .ride-options {
   background-color: #fbb001;
   padding: 60px 0;
