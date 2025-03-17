@@ -80,14 +80,14 @@ body {
   margin-bottom: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color:rgba(206, 209, 9, 0.923);
+  color:black
 }
 .hero-title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 20px;
   line-height: 1.3;
-  color:rgba(206, 209, 9, 0.923);
+  color:black;
 }
 
 .hero-cta {

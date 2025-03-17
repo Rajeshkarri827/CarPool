@@ -135,7 +135,7 @@ function Log() {
               className={`login-button ${loading ? "loading" : ""}`}
               disabled={loading}
             >
-              {loading ? "Signing In..." : "Log In"}
+             <Link to={"/offerpage"}>{loading ? "Signing In..." : "Log In"} </Link>
             </button>
 
             <button onClick={handlegooglelogin}>Google Login</button>

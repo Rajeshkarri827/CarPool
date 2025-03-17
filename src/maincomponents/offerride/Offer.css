@@ -1,0 +1,33 @@
+
+.offer-container {
+    background-color: #fbb001;
+    min-height: calc(100vh - 56px); 
+    padding-bottom: 2rem;
+  }
+  
+ 
+  .navbar-dark.bg-black {
+    background-color: white !important;
+  }
+  
+  .map-tabs {
+    background-color: #fff;
+  }
+  
+  
+  .map-error {
+    background-color: #f8f9fa; 
+    border: 2px dashed #ddd;
+    border-radius: 4px;
+  }
+  
+ 
+  .nav-tabs .nav-link.active {
+    border-color: #fbb001 #fbb001 transparent; 
+    color: #000 !important;
+  }
+  
+  .nav-tabs .nav-link {
+    color: #000;
+  }
+  
